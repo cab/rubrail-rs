@@ -821,12 +821,12 @@ impl TTouchbar for Touchbar {
                 let cls = Class::get("NSTouchBar").unwrap();
                 match util::get_appkit_version() >= AppKitVersion::from_tuple(10, 14) {
                     true => {
-                        msg_send![cls, minimizeSystemModalTouchBar: old_bar];
-                        msg_send![cls, dismissSystemModalTouchBar: old_bar];
+                        let _: () = msg_send![cls, minimizeSystemModalTouchBar: old_bar];
+                        let _: () = msg_send![cls, dismissSystemModalTouchBar: old_bar];
                     },
                     false => {
-                        msg_send![cls, minimizeSystemModalFunctionBar: old_bar];
-                        msg_send![cls, dismissSystemModalFunctionBar: old_bar];
+                        let _: () = msg_send![cls, minimizeSystemModalFunctionBar: old_bar];
+                        let _: () = msg_send![cls, dismissSystemModalFunctionBar: old_bar];
                     },
                 }
                 self.free_bar_allocations(old_bar);
